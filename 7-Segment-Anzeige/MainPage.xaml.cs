@@ -213,6 +213,8 @@
         {
             GpioController gpioController = GpioController.GetDefault();
 
+            this.SetSegmentValueToLow(gpioController);
+
             foreach (var item in this.numberDictionary)
             {
                 if (Count.Text == item.Key.ToString())
@@ -269,6 +271,65 @@
             this.numberDictionary.Add(7, new List<int> { 1, 1, 1, 0, 0, 0, 0, 1 }); // 7
             this.numberDictionary.Add(8, new List<int> { 1, 1, 1, 1, 1, 1, 1, 1 }); // 8
             this.numberDictionary.Add(9, new List<int> { 1, 1, 1, 0, 0, 1, 1, 1 }); // 9
+        }
+
+        public void SetSegmentValueToLow(GpioController controller)
+        {
+            #region [ SEGMENT PORT 1 OFF ]
+
+            this.SegmentValue1 = this.Low;
+            this.Pin1.Write(this.SegmentValue1);
+
+            #endregion [ SEGMENT PORT 1 OFF ]
+
+            #region [ SEGMENT PORT 2 OFF ]
+
+            this.SegmentValue2 = this.Low;
+            this.Pin2.Write(this.SegmentValue2);
+
+            #endregion [ SEGMENT PORT 2 OFF ]
+
+            #region [ SEGMENT PORT 3 OFF ]
+
+            this.SegmentValue3 = this.Low;
+            this.Pin3.Write(this.SegmentValue3);
+
+            #endregion [ SEGMENT PORT 3 OFF ]
+
+            #region [ SEGMENT PORT 4 OFF ]
+
+            this.SegmentValue4 = this.Low;
+            this.Pin4.Write(this.SegmentValue4);
+
+            #endregion [ SEGMENT PORT 4 OFF ]
+
+            #region [ SEGMENT PORT 5 OFF ]
+
+            this.SegmentValue5 = this.Low;
+            this.Pin5.Write(this.SegmentValue5);
+
+            #endregion [ SEGMENT PORT 5 OFF ]
+
+            #region [ SEGMENT PORT 6 OFF ]
+
+            this.SegmentValue6 = this.Low;
+            this.Pin6.Write(this.SegmentValue6);
+
+            #endregion [ SEGMENT PORT 6 OFF ]
+
+            #region [ SEGMENT PORT 7 OFF ]
+
+            this.SegmentValue7 = this.Low;
+            this.Pin7.Write(this.SegmentValue7);
+
+            #endregion [ SEGMENT PORT 7 OFF ]
+
+            #region [ SEGMENT PORT 8 OFF ]
+
+            this.SegmentValue8 = this.Low;
+            this.Pin8.Write(this.SegmentValue8);
+
+            #endregion [ SEGMENT PORT 8 OFF ]
         }
 
         /// <summary>
