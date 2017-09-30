@@ -181,33 +181,34 @@
 
         #region [ MAIN FUNCTION ]
 
+        /// <summary>
+        ///     Main function
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
 
-            //GpioController gpioController = GpioController.GetDefault();
+            GpioController gpiocontroller = GpioController.GetDefault();
 
-            //if (gpioController == null)
-            //{
-            //    throw new System.Exception("GPIO not installed");
-            //}
-            //else
-            //{
-            //    this.InitializeComponent();
-
-            //    try
-            //    {
-            //        this.InitializeNumbersForDisplay();
-            //    }
-            //    catch (ExceptionDictionaryNotFound ex)
-            //    {
-            //        ex.Message.ToString();
-            //    }
-            //}
+            if (gpiocontroller == null)
+            {
+                throw new System.Exception("gpio not installed");
+            }
+            else
+            {
+                try
+                {
+                    this.InitializeNumbersForDisplay();
+                }
+                catch (ExceptionDictionaryNotFound ex)
+                {
+                    ex.Message.ToString();
+                }
+            }
         }
 
         /// <summary>
-        ///
+        ///     Button eventhandler
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -219,7 +220,7 @@
 
             foreach (var item in this.numberDictionary)
             {
-                if (Count.Text == item.Key.ToString())
+                if (Count.Text == item.Key.ToString() && Count.Text.Length > 2)
                 {
                     if (item.Value[0] == 1)
                     {
@@ -259,8 +260,11 @@
 
         #endregion [ MAIN FUNCTION ]
 
-        #region [ INIT METHODES ]
+        #region [ PUBLIC INIT METHODES ]
 
+        /// <summary>
+        ///     Initialize the dictionary for the segment display numbers.
+        /// </summary>
         public void InitializeNumbersForDisplay()
         {
             this.numberDictionary.Add(0, new List<int> { 1, 1, 1, 1, 1, 1, 0, 1 }); // 0
@@ -275,6 +279,10 @@
             this.numberDictionary.Add(9, new List<int> { 1, 1, 1, 0, 0, 1, 1, 1 }); // 9
         }
 
+        /// <summary>
+        ///     Set all Segment Ports to "OFF"
+        /// </summary>
+        /// <param name="controller"></param>
         public void SetSegmentValueToLow(GpioController controller)
         {
             #region [ SEGMENT PORT 1 OFF ]
@@ -335,7 +343,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 1 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_1(GpioController controller)
@@ -351,7 +359,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 2 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_2(GpioController controller)
@@ -367,7 +375,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 3 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_3(GpioController controller)
@@ -383,7 +391,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 4 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_4(GpioController controller)
@@ -399,7 +407,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 5 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_5(GpioController controller)
@@ -415,7 +423,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 6 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_6(GpioController controller)
@@ -431,7 +439,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 7 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_7(GpioController controller)
@@ -447,7 +455,7 @@
         }
 
         /// <summary>
-        ///
+        ///     Set Segment 8 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
         public void InitSegmentPort_8(GpioController controller)
@@ -462,6 +470,6 @@
             #endregion [ INIT SEGMENT PORT 8 ]
         }
 
-        #endregion [ INIT METHODES ]
+        #endregion [ PUBLIC INIT METHODES ]
     }
 }
