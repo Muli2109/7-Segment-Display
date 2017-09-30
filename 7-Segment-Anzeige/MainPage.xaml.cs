@@ -183,25 +183,27 @@
 
         public MainPage()
         {
-            GpioController gpioController = GpioController.GetDefault();
+            this.InitializeComponent();
 
-            if (gpioController == null)
-            {
-                throw new System.Exception("GPIO not installed");
-            }
-            else
-            {
-                this.InitializeComponent();
+            //GpioController gpioController = GpioController.GetDefault();
 
-                try
-                {
-                    this.InitializeNumbersForDisplay();
-                }
-                catch (ExceptionDictionaryNotFound ex)
-                {
-                    ex.Message.ToString();
-                }
-            }
+            //if (gpioController == null)
+            //{
+            //    throw new System.Exception("GPIO not installed");
+            //}
+            //else
+            //{
+            //    this.InitializeComponent();
+
+            //    try
+            //    {
+            //        this.InitializeNumbersForDisplay();
+            //    }
+            //    catch (ExceptionDictionaryNotFound ex)
+            //    {
+            //        ex.Message.ToString();
+            //    }
+            //}
         }
 
         /// <summary>
