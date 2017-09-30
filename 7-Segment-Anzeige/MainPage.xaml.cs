@@ -1,4 +1,6 @@
-﻿namespace _7_Segment_Anzeige
+﻿
+
+namespace _7_Segment_Anzeige
 {
     #region [ REFERENCES ]
 

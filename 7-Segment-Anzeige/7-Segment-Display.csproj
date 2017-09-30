@@ -105,6 +105,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="7-Segment-Anzeige.licenseheader" />
     <None Include="7-Segment-Anzeige_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
