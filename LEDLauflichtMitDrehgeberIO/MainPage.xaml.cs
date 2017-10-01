@@ -152,7 +152,7 @@
         /// <summary>
         ///
         /// </summary>
-        private const int BUTTON_1;
+        // private const int BUTTON_1;
 
         #endregion [ BUTTON REGION ]
 
@@ -240,16 +240,12 @@
             {
                 throw new Exception("No Gpio Pin installed");
             }
+            // Turn all LED´s ON
+            this.CallInitMethodesForON(gpioController);
 
-            bool needed = false;
-            if (needed)
-            {
-                // Turn all LED´s ON
-                this.CallInitMethodesForON(gpioController);
-
-                // Turn all LED´s OFF
-                this.CallInitMethodesForOFF(gpioController);
-            }
+            // Turn all LED´s OFF
+            this.CallInitMethodesForOFF(gpioController);
+            
         }
 
         #region [ CALL METHODES ]
