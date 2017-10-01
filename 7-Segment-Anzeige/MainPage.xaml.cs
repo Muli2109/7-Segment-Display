@@ -1,6 +1,4 @@
-﻿
-
-namespace _7_Segment_Anzeige
+﻿namespace _7_Segment_Anzeige
 {
     #region [ REFERENCES ]
 
@@ -192,19 +190,15 @@ namespace _7_Segment_Anzeige
 
             GpioController gpiocontroller = GpioController.GetDefault();
 
-            if (gpiocontroller == null)
-            {
+            if (gpiocontroller == null) {
                 throw new System.Exception("gpio not installed");
-            }
-            else
-            {
-                try
-                {
+            } else {
+                try {
                     this.InitializeNumbersForDisplay();
+                    this.OpenGpioPins(gpiocontroller);
                 }
-                catch (ExceptionDictionaryNotFound ex)
-                {
-                    ex.Message.ToString();
+                catch (ExceptionDictionaryNotFound ex) {
+                    mbox.Text = ex.Message.ToString();
                 }
             }
         }
@@ -214,48 +208,43 @@ namespace _7_Segment_Anzeige
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e) {
             GpioController gpioController = GpioController.GetDefault();
 
             this.SetSegmentValueToLow(gpioController);
 
-            foreach (var item in this.numberDictionary)
-            {
-                if (Count.Text == item.Key.ToString() && Count.Text.Length > 2)
-                {
-                    if (item.Value[0] == 1)
-                    {
-                        InitSegmentPort_1(gpioController);
-                    } // A
-                    if (item.Value[1] == 1)
-                    {
-                        InitSegmentPort_2(gpioController);
-                    } // B
-                    if (item.Value[2] == 1)
-                    {
-                        InitSegmentPort_3(gpioController);
-                    } // C
-                    if (item.Value[3] == 1)
-                    {
-                        InitSegmentPort_4(gpioController);
-                    } // D
-                    if (item.Value[4] == 1)
-                    {
-                        InitSegmentPort_5(gpioController);
-                    } // E
-                    if (item.Value[5] == 1)
-                    {
-                        InitSegmentPort_6(gpioController);
-                    } // F
-                    if (item.Value[6] == 1)
-                    {
-                        InitSegmentPort_7(gpioController);
-                    } // G
-                    if (item.Value[7] == 1)
-                    {
-                        InitSegmentPort_8(gpioController);
-                    } // DOT.
+            foreach (var item in this.numberDictionary) {
+                if (Count.Text.Length < 2) {
+                    mbox.Text = "";
+
+                    if (Count.Text == item.Key.ToString()) {
+                        if (item.Value[0] == 1) {
+                            InitSegmentPort_1(gpioController); // A
+                        }
+                        if (item.Value[1] == 1) {
+                            InitSegmentPort_2(gpioController); // B
+                        }
+                        if (item.Value[2] == 1) {
+                            InitSegmentPort_3(gpioController); // C
+                        }
+                        if (item.Value[3] == 1) {
+                            InitSegmentPort_4(gpioController); // D
+                        }
+                        if (item.Value[4] == 1) {
+                            InitSegmentPort_5(gpioController); // E
+                        }
+                        if (item.Value[5] == 1) {
+                            InitSegmentPort_6(gpioController); // F
+                        }
+                        if (item.Value[6] == 1) {
+                            InitSegmentPort_7(gpioController); // G
+                        }
+                        if (item.Value[7] == 1) {
+                            InitSegmentPort_8(gpioController); // DOT
+                        }
+                    }
+                } else {
+                    mbox.Text = "Please enter a Number from 0-9";
                 }
             }
         }
@@ -267,8 +256,7 @@ namespace _7_Segment_Anzeige
         /// <summary>
         ///     Initialize the dictionary for the segment display numbers.
         /// </summary>
-        public void InitializeNumbersForDisplay()
-        {
+        public void InitializeNumbersForDisplay() {
             this.numberDictionary.Add(0, new List<int> { 1, 1, 1, 1, 1, 1, 0, 1 }); // 0
             this.numberDictionary.Add(1, new List<int> { 0, 1, 1, 0, 0, 0, 0, 1 }); // 1
             this.numberDictionary.Add(2, new List<int> { 1, 1, 0, 1, 1, 0, 1, 1 }); // 2
@@ -281,65 +269,92 @@ namespace _7_Segment_Anzeige
             this.numberDictionary.Add(9, new List<int> { 1, 1, 1, 0, 0, 1, 1, 1 }); // 9
         }
 
+        public void OpenGpioPins(GpioController controller) {
+            this.Pin1 = controller.OpenPin(SEGMENT_PIN_A);
+            this.Pin2 = controller.OpenPin(SEGMENT_PIN_B);
+            this.Pin3 = controller.OpenPin(SEGMENT_PIN_C);
+            this.Pin4 = controller.OpenPin(SEGMENT_PIN_D);
+            this.Pin5 = controller.OpenPin(SEGMENT_PIN_E);
+            this.Pin6 = controller.OpenPin(SEGMENT_PIN_F);
+            this.Pin7 = controller.OpenPin(SEGMENT_PIN_G);
+            this.Pin8 = controller.OpenPin(SEGMENT_PIN_DOT);
+        }
+
         /// <summary>
         ///     Set all Segment Ports to "OFF"
         /// </summary>
         /// <param name="controller"></param>
-        public void SetSegmentValueToLow(GpioController controller)
-        {
+        public void SetSegmentValueToLow(GpioController controller) {
+            
             #region [ SEGMENT PORT 1 OFF ]
 
-            this.SegmentValue1 = this.Low;
-            this.Pin1.Write(this.SegmentValue1);
+            if (this.SegmentValue1 != GpioPinValue.Low) {
+                this.SegmentValue1 = this.Low;
+                this.Pin1.Write(this.SegmentValue1);
+            }
 
             #endregion [ SEGMENT PORT 1 OFF ]
 
             #region [ SEGMENT PORT 2 OFF ]
 
-            this.SegmentValue2 = this.Low;
-            this.Pin2.Write(this.SegmentValue2);
+            if (this.SegmentValue2 != GpioPinValue.Low) {
+                this.SegmentValue2 = this.Low;
+                this.Pin2.Write(this.SegmentValue2);
+            }
 
             #endregion [ SEGMENT PORT 2 OFF ]
 
             #region [ SEGMENT PORT 3 OFF ]
 
-            this.SegmentValue3 = this.Low;
-            this.Pin3.Write(this.SegmentValue3);
+            if (this.SegmentValue3 != GpioPinValue.Low) {
+                this.SegmentValue3 = this.Low;
+                this.Pin3.Write(this.SegmentValue3);
+            }
 
             #endregion [ SEGMENT PORT 3 OFF ]
 
             #region [ SEGMENT PORT 4 OFF ]
 
-            this.SegmentValue4 = this.Low;
-            this.Pin4.Write(this.SegmentValue4);
+            if (this.SegmentValue4 != GpioPinValue.Low) { 
+                this.SegmentValue4 = this.Low;
+                this.Pin4.Write(this.SegmentValue4);
+            }
 
             #endregion [ SEGMENT PORT 4 OFF ]
 
             #region [ SEGMENT PORT 5 OFF ]
 
-            this.SegmentValue5 = this.Low;
-            this.Pin5.Write(this.SegmentValue5);
+            if (this.SegmentValue5 != GpioPinValue.Low) {
+                this.SegmentValue5 = this.Low;
+                this.Pin5.Write(this.SegmentValue5);
+            }
 
             #endregion [ SEGMENT PORT 5 OFF ]
 
             #region [ SEGMENT PORT 6 OFF ]
 
-            this.SegmentValue6 = this.Low;
-            this.Pin6.Write(this.SegmentValue6);
+            if (this.SegmentValue6 != GpioPinValue.Low) {
+                this.SegmentValue6 = this.Low;
+                this.Pin6.Write(this.SegmentValue6);
+            }
 
             #endregion [ SEGMENT PORT 6 OFF ]
 
             #region [ SEGMENT PORT 7 OFF ]
 
-            this.SegmentValue7 = this.Low;
-            this.Pin7.Write(this.SegmentValue7);
+            if (this.SegmentValue7 != GpioPinValue.Low) {
+                this.SegmentValue7 = this.Low;
+                this.Pin7.Write(this.SegmentValue7);
+            }
 
             #endregion [ SEGMENT PORT 7 OFF ]
 
             #region [ SEGMENT PORT 8 OFF ]
 
-            this.SegmentValue8 = this.Low;
-            this.Pin8.Write(this.SegmentValue8);
+            if (this.SegmentValue8 != GpioPinValue.Low){
+                this.SegmentValue8 = this.Low;
+                this.Pin8.Write(this.SegmentValue8);
+            }
 
             #endregion [ SEGMENT PORT 8 OFF ]
         }
@@ -348,11 +363,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 1 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_1(GpioController controller)
-        {
+        public void InitSegmentPort_1(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 1 ]
 
-            this.Pin1 = controller.OpenPin(SEGMENT_PIN_A);
             this.SegmentValue1 = this.High;
             this.Pin1.Write(this.SegmentValue1);
             this.Pin1.SetDriveMode(this.Output);
@@ -364,11 +378,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 2 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_2(GpioController controller)
-        {
+        public void InitSegmentPort_2(GpioController controller) {
+           
             #region [ INIT SEGMENT PORT 2 ]
 
-            this.Pin2 = controller.OpenPin(SEGMENT_PIN_B);
             this.SegmentValue2 = this.High;
             this.Pin2.Write(this.SegmentValue2);
             this.Pin2.SetDriveMode(this.Output);
@@ -380,11 +393,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 3 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_3(GpioController controller)
-        {
+        public void InitSegmentPort_3(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 3 ]
 
-            this.Pin3 = controller.OpenPin(SEGMENT_PIN_C);
             this.SegmentValue3 = this.High;
             this.Pin3.Write(this.SegmentValue3);
             this.Pin3.SetDriveMode(this.Output);
@@ -396,11 +408,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 4 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_4(GpioController controller)
-        {
+        public void InitSegmentPort_4(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 4 ]
 
-            this.Pin4 = controller.OpenPin(SEGMENT_PIN_D);
             this.SegmentValue4 = this.High;
             this.Pin4.Write(this.SegmentValue4);
             this.Pin4.SetDriveMode(this.Output);
@@ -412,11 +423,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 5 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_5(GpioController controller)
-        {
+        public void InitSegmentPort_5(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 5 ]
 
-            this.Pin5 = controller.OpenPin(SEGMENT_PIN_E);
             this.SegmentValue5 = this.High;
             this.Pin5.Write(this.SegmentValue5);
             this.Pin5.SetDriveMode(this.Output);
@@ -428,11 +438,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 6 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_6(GpioController controller)
-        {
+        public void InitSegmentPort_6(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 6 ]
 
-            this.Pin6 = controller.OpenPin(SEGMENT_PIN_F);
             this.SegmentValue6 = this.High;
             this.Pin6.Write(this.SegmentValue6);
             this.Pin6.SetDriveMode(this.Output);
@@ -444,11 +453,10 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 7 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_7(GpioController controller)
-        {
+        public void InitSegmentPort_7(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 7 ]
 
-            this.Pin7 = controller.OpenPin(SEGMENT_PIN_G);
             this.SegmentValue7 = this.High;
             this.Pin7.Write(this.SegmentValue7);
             this.Pin7.SetDriveMode(this.Output);
@@ -460,17 +468,16 @@ namespace _7_Segment_Anzeige
         ///     Set Segment 8 Port to "ON"
         /// </summary>
         /// <param name="controller"></param>
-        public void InitSegmentPort_8(GpioController controller)
-        {
+        public void InitSegmentPort_8(GpioController controller) {
+            
             #region [ INIT SEGMENT PORT 8 ]
 
-            this.Pin8 = controller.OpenPin(SEGMENT_PIN_DOT);
             this.SegmentValue8 = this.High;
             this.Pin8.Write(this.SegmentValue8);
             this.Pin8.SetDriveMode(this.Output);
 
             #endregion [ INIT SEGMENT PORT 8 ]
-        }
+        } 
 
         #endregion [ PUBLIC INIT METHODES ]
     }

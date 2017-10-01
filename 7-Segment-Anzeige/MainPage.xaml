@@ -5,9 +5,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Color x:Key="Color1">#66FFFFFF</Color>
+        <Color x:Key="Color2">#66FFFFFF</Color>
+        <Color x:Key="Color3">#33FFFFFF</Color>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox Visibility="Visible" Name="Count" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <Button Visibility="Visible" Content="Button" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+    <Grid Background="{ThemeResource AccentButtonBackgroundPressed}" Margin="0,0,0,10">
+        <TextBox Visibility="Visible" Name="Count" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="96" Width="340" PlaceholderText="Enter a Number" FontFamily="Calibri" FontSize="72" FontWeight="Bold" AutomationProperties.HelpText="Enter a Number from 0-9" Foreground="Black" SelectionHighlightColor="#FF2876B4">
+            <TextBox.Background>
+                <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+            </TextBox.Background>
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Button Visibility="Visible" Content="Ausführen" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Click="Button_Click" Height="138" Width="340" BorderBrush="White" FontFamily="Calibri" FontSize="72">
+            <Button.Background>
+                <SolidColorBrush Color="{ThemeResource SystemChromeWhiteColor}"/>
+            </Button.Background>
+        </Button>
+        <TextBox HorizontalAlignment="Left" Name="mbox" Margin="10,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="158" Width="340" FontFamily="Calibri" FontSize="24" Background="#66000000" IsReadOnly="True"/>
     </Grid>
 </Page>
