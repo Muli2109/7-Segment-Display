@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <TextBox HorizontalAlignment="Left" Name="LED_STATUS" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsReadOnly="True" Background="#66FFFFFF" />
+        <GridView HorizontalAlignment="Left" Name="GPIO_GRID_VIEW" Height="167" Margin="10,47,0,0" VerticalAlignment="Top" Width="340" />
+        <TextBox HorizontalAlignment="Left" Name="INCREMENTAL_COUNT" Margin="79,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
+        <TextBox HorizontalAlignment="Left" Name="COUNTER_INCREMENTAL_COUNT" Margin="148,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
     </Grid>
 </Page>
