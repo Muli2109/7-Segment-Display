@@ -1,4 +1,8 @@
-﻿// Copyright (c) Julian Polanc 2017
+﻿/* Copyright (c) Julian Polanc 2017
+*
+* The LED-Light-With-Encoder-IO project is an LED light application for the Raspberry Pi 3 under Windows IoT. 
+* The speed (milliseconds) of the running light is determined by a rotary encoder.
+*/
 
 namespace LEDLauflichtMitDrehgeberIO
 {
