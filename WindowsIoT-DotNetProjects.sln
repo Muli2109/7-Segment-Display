@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7-Segment-Display", "7-Segm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED-Lauflicht-Mit-Drehgeber-IO", "LEDLauflichtMitDrehgeberIO\LED-Lauflicht-Mit-Drehgeber-IO.csproj", "{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCD-Display-Rotary-Encoder", "LCD-Display-Rotary-Encoder\LCD-Display-Rotary-Encoder.csproj", "{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -73,6 +75,24 @@ Global
 		{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}.Release|x86.ActiveCfg = Release|x86
 		{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}.Release|x86.Build.0 = Release|x86
 		{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}.Release|x86.Deploy.0 = Release|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|ARM.Build.0 = Debug|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x64.ActiveCfg = Debug|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x64.Build.0 = Debug|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x64.Deploy.0 = Debug|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x86.ActiveCfg = Debug|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x86.Build.0 = Debug|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Debug|x86.Deploy.0 = Debug|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|ARM.ActiveCfg = Release|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|ARM.Build.0 = Release|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|ARM.Deploy.0 = Release|ARM
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x64.ActiveCfg = Release|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x64.Build.0 = Release|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x64.Deploy.0 = Release|x64
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x86.ActiveCfg = Release|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x86.Build.0 = Release|x86
+		{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
