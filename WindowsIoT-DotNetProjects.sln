@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED-Taster-Schaltung", "LedschaltungMitSchaltern\LED-Taster-Schaltung.csproj", "{3622188C-9CF1-46F5-8554-4E34A67DDBAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED-Button-Circut", "LedschaltungMitSchaltern\LED-Button-Circut.csproj", "{3622188C-9CF1-46F5-8554-4E34A67DDBAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7-Segment-Display", "7-Segment-Anzeige\7-Segment-Display.csproj", "{9AB0C59C-EF9B-4564-A59C-DC15D1CBA4CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED-Lauflicht-Mit-Drehgeber-IO", "LEDLauflichtMitDrehgeberIO\LED-Lauflicht-Mit-Drehgeber-IO.csproj", "{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED-Chaser-With-Rotary-Encoder", "LEDLauflichtMitDrehgeberIO\LED-Chaser-With-Rotary-Encoder.csproj", "{F2B75A9B-D5CB-4547-AA73-DC3968C9E2D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCD-Display-Rotary-Encoder", "LCD-Display-Rotary-Encoder\LCD-Display-Rotary-Encoder.csproj", "{EEEFB7E7-C210-4E64-BC47-34397DA3CADE}"
 EndProject
